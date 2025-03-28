@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" name="" id="imageInput" placeholder="Enter the image link">
+        <button onclick="addImage()">Add Image</button>
+        <div id="gallery"></div>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        function addImage(){
+            const urlinput=document.getElementById('imageInput');
+            const url = urlinput.value;
+            if(!url){
+                alert("Please enter the image link");
+
+            }
+            const img = document.createElement('img');
+            img.src=url;
+            img.style.width="200px";
+            img.style.height="200px";
+            gallery.appendChild(img);
+            urlinput.value="";
+        }
+    </script>
+</body>
+</html>
