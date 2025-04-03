@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-blue-400">
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center w-80">
+        <h1 class="text-xl font-bold mb-4">Countdown Timer</h1>
+        <input type="number" id="timeInput" class="border p-2 w-full text-center rounded" placeholder="Enter seconds">
+        <button onclick="startCountdown()" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 w-full">Start Countdown</button>
+        <div id="timerDisplay" class="mt-4 text-xl font-bold text-blue-600"></div>
+    </div>
+    
+    <script>
+        let countdown;
+        function startCountdown() {
+            clearInterval(countdown);
+            const inputSeconds = parseInt(document.getElementById("timeInput").value, 10);
+            if (isNaN(inputSeconds) || inputSeconds <= 0) {
+                document.getElementById("timerDisplay").innerText = "Please enter a valid number";
+                return;
+            }
+            let remainingTime = inputSeconds;
+            updateDisplay(remainingTime);
+            countdown = setInterval(() => {
+                remainingTime--;
+                updateDisplay(remainingTime);
+                if (remainingTime <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById("timerDisplay").innerText = "Time's up!";
+                }
+            }, 1000);
+        }
+        function updateDisplay(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            document.getElementById("timerDisplay").innerText = `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
