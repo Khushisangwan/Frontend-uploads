@@ -67,6 +67,8 @@ h4{
     font-weight: bolder;
     font-size: 30px;
 }
+
+
 .footer{
     grid-area: footer;
     background-color: #333;
