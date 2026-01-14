@@ -15,6 +15,23 @@
     <ul id="TaskList"></ul>
 
     <script>
+         function addTask(){
+            const taskInputValue=document.getElementById('taskInput');
+            const taskValue=taskInputValue.value;
+            if(taskInputValue===""){
+                alert("Please Enter the task");
+
+            }
+            const li=document.createElement('li');    //creating a list
+            li.textContent=taskValue;   //adding the task value to the list 
+            document.getElementById('TaskList').appendChild(li); //appending the list to the ul 
+            taskInputValue.value="";
+            
+            taskInputValue.onkeypress=(e)=>{
+                if(e.Key==='Enter') AddTaskButton.click(6)
+            }
+
+        }
 
        
     </script>
